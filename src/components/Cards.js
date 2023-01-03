@@ -13,7 +13,7 @@ function Cards () {
 
     const getPeople = () => {
         axios
-            .get('http://localhost:8000/api/dating')
+            .get('https://serene-mountain-09515.herokuapp.com/api/dating')
             .then((response) => setPeople(response.data), 
             (err) => console.log(err))
     }
