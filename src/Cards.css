@@ -1,0 +1,41 @@
+.card{
+    position: relative;
+    width: 400px;
+    height: 60vh;
+    max-width: 85vw;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+.containerCard {
+    display: flex;
+    justify-content: center;
+    /* margin-top: 5vh; */
+
+}
+
+.swipe{
+    position: absolute;
+}
+
+h3{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    background: linear-gradient(to left top, red, orange);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.details{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.264);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.plus{
+    position: absolute !important;
+    right: 0 !important;
+}
