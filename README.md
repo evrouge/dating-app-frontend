@@ -1,4 +1,5 @@
 # dating-app-frontend
+Rafaela, Evin,  Emon
 
-Rafaela Hollanda
-Emon
+## Sources:
+- React-Card-Flip here: `https://www.npmjs.com/package/react-card-flip`
