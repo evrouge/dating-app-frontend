@@ -3,16 +3,23 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import '../Footer.css';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom";
 
-function Footer () {
-    return(
+
+function Footer() {
+    return (
         <div className="footer">
             <IconButton>
-                <CloseIcon color="error" fontSize="large"/>
+                <CloseIcon color="error" fontSize="large" />
             </IconButton>
 
             <IconButton>
-                <FavoriteIcon color="success" fontSize="large"/>
+                <FavoriteIcon color="success" fontSize="large" />
             </IconButton>
         </div>
     )
