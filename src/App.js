@@ -8,19 +8,7 @@ import Footer from './components/Footer';
 
 
 function App() {
-  // let [people, setPeople] = useState([])
-
-  //   const getPeople = () => {
-  //       axios
-  //           .get('http://localhost:8000/api/dating')
-  //           .then((response) => setPeople(response.data), 
-  //           (err) => console.log(err))
-  //   }
-    
-  //   useEffect (() => {
-  //       getPeople();
-  //   },[])
-
+  
   return (
     <div className="App">
       {/* header */}
