@@ -7,18 +7,26 @@ import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import { amber } from "@mui/material/colors";
 import "../Cards.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
-function Cards() {
-  let [people, setPeople] = useState([]);
+
+function Cards(props) {
+  // let [people, setPeople] = useState([]);
   const [details, setDetails] = useState(false);
   const [isFlippedId, setIsFlippedId] = useState();
 
-  const getPeople = () => {
-    axios.get("https://serene-mountain-09515.herokuapp.com/api/dating").then(
-      (response) => setPeople(response.data),
-      (err) => console.log(err)
-    );
-  };
+  // const getPeople = () => {
+  //   axios.get("https://serene-mountain-09515.herokuapp.com/api/dating").then(
+  //     (response) => setPeople(response.data),
+  //     (err) => console.log(err)
+  //   );
+  // };
+
   const getDetails = () => {
     setDetails(!details);
   };
@@ -35,13 +43,13 @@ function Cards() {
   };
 
   useEffect(() => {
-    getPeople();
+    props.getPeople();
   }, []);
 
   return (
     <div>
       <div className="containerCard">
-        {people.map((person) => {
+        {props.people.map((person) => {
           return (
             <TinderCard
               className="swipe"
@@ -54,7 +62,7 @@ function Cards() {
               >
                 <div
                   style={{ backgroundImage: `url(${person.image})` }}
-                  className="card"
+                  className="cardd"
                 >
                   <h3>
                     {person.name}, {person.age}
