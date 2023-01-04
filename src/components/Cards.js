@@ -1,55 +1,105 @@
 import { useEffect, useState } from "react";
-import React from 'react';
+import React from "react";
 import axios from "axios";
-import TinderCard from 'react-tinder-card';
-import AddIcon from '@mui/icons-material/Add';
-import IconButton from '@mui/material/IconButton';
-import {amber} from '@mui/material/colors';
-import '../Cards.css';
+import TinderCard from "react-tinder-card";
+import ReactCardFlip from "react-card-flip";
+import AddIcon from "@mui/icons-material/Add";
+import IconButton from "@mui/material/IconButton";
+import { amber } from "@mui/material/colors";
+import "../Cards.css";
 
-function Cards () {
-    let [people, setPeople] = useState([])
-    const [details, setDetails] = useState(false)
+function Cards() {
+  let [people, setPeople] = useState([]);
+  const [details, setDetails] = useState(false);
+  const [isFlippedId, setIsFlippedId] = useState();
 
-    const getPeople = () => {
-        axios
-            .get('https://serene-mountain-09515.herokuapp.com/api/dating')
-            .then((response) => setPeople(response.data), 
-            (err) => console.log(err))
+  const getPeople = () => {
+    axios.get("https://serene-mountain-09515.herokuapp.com/api/dating").then(
+      (response) => setPeople(response.data),
+      (err) => console.log(err)
+    );
+  };
+  const getDetails = () => {
+    setDetails(!details);
+  };
+
+  const handleClick = (id) => {
+    console.log(id);
+    // if there is a truthy id parameter, update state with said id to flip the corresponding card, else revert cards to original state
+    if (id) {
+      setIsFlippedId(id);
+    } else {
+      setIsFlippedId();
     }
-    const getDetails = () => { 
-        setDetails(!details)
-    }
-    
-    useEffect (() => {
-        getPeople();
-    },[])
+    console.log("card is flipped");
+  };
 
-    return (
-        <div>
-            <div className="containerCard">
-            {
-                people.map((person) => {
-                    return (
-                        <TinderCard className="swipe" key={person.id} preventSwipe={["up", "down"]}>
-                            <div style={{backgroundImage: `url(${person.image})`}} className="card">
-                                <h3>{person.name}, {person.age}</h3>
-                                <IconButton className="plus" sx={{color: amber[50]}} onClick={getDetails}>
-                                    <AddIcon></AddIcon>
-                                </IconButton>
-                                {details ? <div className="details"><p><b>Hobbies:</b> {person.hobbies}</p>
-                                <p><b>Location:</b> {person.location}</p>
-                                <p><b>Occupation:</b> {person.occupation}</p></div> : null}
-                            </div>
-                        </TinderCard>
-                    )
-                }
+  useEffect(() => {
+    getPeople();
+  }, []);
 
-            )}
-            </div>
-            
-        </div>
-    )
+  return (
+    <div>
+      <div className="containerCard">
+        {people.map((person) => {
+          return (
+            <TinderCard
+              className="swipe"
+              key={person.id}
+              preventSwipe={["up", "down"]}
+            >
+              <ReactCardFlip
+                isFlipped={isFlippedId === person.id}
+                flipDirection="horizontal"
+              >
+                <div
+                  style={{ backgroundImage: `url(${person.image})` }}
+                  className="card"
+                >
+                  <h3>
+                    {person.name}, {person.age}
+                  </h3>
+                  <IconButton
+                    className="plus"
+                    sx={{ color: amber[50] }}
+                    // onClick={getDetails}
+                    onClick={() => {
+                      handleClick(person.id);
+                    }}
+                  >
+                    <AddIcon></AddIcon>
+                  </IconButton>
+                </div>
+                <div>
+                  <div className="details">
+                    <p>
+                      <b>Hobbies:</b> {person.hobbies}
+                    </p>
+                    <p>
+                      <b>Location:</b> {person.location}
+                    </p>
+                    <p>
+                      <b>Occupation:</b> {person.occupation}
+                    </p>
+                    {/* <button onClick={handleClick}></button>
+                     */}
+                    <IconButton
+                      className="plus"
+                      sx={{ color: amber[50] }}
+                      // onClick={getDetails}
+                      onClick={handleClick}
+                    >
+                      <AddIcon></AddIcon>
+                    </IconButton>
+                  </div>
+                </div>
+              </ReactCardFlip>
+            </TinderCard>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default Cards;
