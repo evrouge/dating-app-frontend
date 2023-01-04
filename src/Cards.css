@@ -1,4 +1,4 @@
-.card{
+.cardd {
     position: relative;
     width: 400px;
     height: 60vh;
@@ -8,18 +8,18 @@
     background-position: center;
     border-radius: 20px;
 }
+
 .containerCard {
     display: flex;
     justify-content: center;
     /* margin-top: 5vh; */
-
 }
 
-.swipe{
+.swipe {
     position: absolute;
 }
 
-h3{
+h3 {
     position: absolute;
     bottom: 0px;
     color: white;
@@ -28,9 +28,11 @@ h3{
     border-radius: 10px;
 }
 
-.details{
+.details {
     color: white;
-    background-color: rgba(0, 0, 0, 0.9/* 0.264 */);
+    background-color: rgba(0, 0, 0, 0.9
+            /* 0.264 */
+        );
     padding: 20px;
     border-radius: 5px;
     width: 400px;
@@ -41,7 +43,7 @@ h3{
     justify-content: center;
 }
 
-.plus{
+.plus {
     position: absolute !important;
     right: 10px;
     top: 10px;

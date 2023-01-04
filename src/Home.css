@@ -1,0 +1,14 @@
+.homepage {
+    background-image: url(https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia.gettyimages.com%2Fid%2F581033659%2Fphoto%2Fsmart-phone-love-connection.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3DsxCzsLd_Jea7c5Oxi_FFEOfmuW_QRokZk5fMLafhw9g%3D);
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to left top, rgba(255, 0, 174, 0.19), rgba(255, 166, 0, 0.116));
+}
