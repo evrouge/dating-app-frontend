@@ -30,12 +30,19 @@ h3{
 
 .details{
     color: white;
-    background-color: rgba(0, 0, 0, 0.264);
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.9/* 0.264 */);
+    padding: 20px;
     border-radius: 5px;
+    width: 400px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .plus{
     position: absolute !important;
-    right: 0 !important;
+    right: 10px;
+    top: 10px;
 }
