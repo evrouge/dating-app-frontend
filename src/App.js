@@ -5,13 +5,26 @@ import axios from "axios";
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
+import AddIcon from "@mui/icons-material/Add";
+import IconButton from "@mui/material/IconButton";
 import Home from "./components/HomePage";
 import Chat from "./components/Chat";
 import Edit from "./components/Edit";
+import Person from './components/Person'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-function App() {
+function App(props) {
   let [people, setPeople] = useState([]);
+  const [details, setDetails] = useState(false);
+  const [isFlippedId, setIsFlippedId] = useState();
+
+  const getDetails = () => {
+    setDetails(!details);
+  };
+
+  useEffect(() => {
+    getPeople();
+  }, []);
 
   const getPeople = () => {
     axios.get("https://serene-mountain-09515.herokuapp.com/api/dating").then(
@@ -29,6 +42,17 @@ function App() {
       });
   };
 
+  const handleUpdate = (editPerson) => {
+    axios
+      .put(
+        "https://serene-mountain-09515.herokuapp.com/api/dating" +
+        editPerson.id, editPerson
+      )
+      .then((response) => {
+        getPeople()
+      })
+  }
+
   return (
     <Router>
       <div className="App">
@@ -43,10 +67,10 @@ function App() {
             }
           ></Route>
           <Route
-            path="/dating/edit"
+            path="/dating/edit/:id"
             element={
               <div>
-                <Header /> <Edit /> <Footer />
+                <Header /> <Edit person={props.person} handleUpdate={handleUpdate} /> <Footer />
               </div>
             }
           ></Route>
@@ -54,8 +78,15 @@ function App() {
             path="/dating"
             element={
               <div>
-                <Header /> <Cards getPeople={getPeople} people={people} />{" "}
-                {/* <Footer /> */}
+                <Header />
+                <div className="containerCard">
+                  {people.map((person) => {
+                    return (
+                      <Person key={person.id} person={person} />
+                    )
+                  })
+                  }
+                </div>
               </div>
             }
           ></Route>
@@ -65,8 +96,12 @@ function App() {
           ></Route>
         </Routes>
       </div>
-    </Router>
+    </Router >
   );
 }
 
 export default App;
+
+
+
+{/* <Cards getPeople={getPeople} people={people} /> */ }
