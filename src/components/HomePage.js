@@ -138,7 +138,7 @@ function Home(props) {
                   <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
 
-                <Button className="mb-3" variant="success" type="submit">
+                <Button className="mb-3" variant="primary" type="submit">
                   Submit
                 </Button>
               </Form>
