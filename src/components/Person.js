@@ -2,18 +2,25 @@ import React, { useState, useRef } from 'react'
 import TinderCard from "react-tinder-card";
 import ReactCardFlip from "react-card-flip";
 import AddIcon from "@mui/icons-material/Add";
+import EditIcon from '@mui/icons-material/Edit';
 import IconButton from "@mui/material/IconButton";
 import { amber } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CloseIcon from "@mui/icons-material/Close";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 const Person = (props) => {
-const [isFlippedId, setIsFlippedId] = useState(false);
+  const [isFlippedId, setIsFlippedId] = useState(false);
   const person = props.person
   const cardRef = useRef();
 
   const handleClick = () => {
-    
+
     // if there is a truthy id parameter, update state with said id to flip the corresponding card, else revert cards to original state
     // if (id) {
     //   setIsFlippedId(id);
@@ -23,17 +30,21 @@ const [isFlippedId, setIsFlippedId] = useState(false);
     setIsFlippedId(prev => !prev)
     console.log("card is flipped");
   };
-  
-  const handleClickX = () => {
-    cardRef.current.swipe("left")
-  }
 
-  const handleClickHeart = () => {
-    cardRef.current.swipe("right");
+  // const handleClickX = () => {
+  //   cardRef.current.swipe("left")
+  // }
+
+  // const handleClickHeart = () => {
+  //   cardRef.current.swipe("right");
+  // }
+
+  const swipe = (dir) => {
+    cardRef.current.swipe(dir)
   }
 
   return (
-    <TinderCard className="swipe" key={person.id} preventSwipe={["up", "down"]} ref={cardRef}>
+    <TinderCard className="swipe" key={person.id} preventSwipe={["up", "down"]} ref={cardRef} OnSwipe={(dir) => swipe(dir)}>
       <ReactCardFlip isFlipped={isFlippedId} flipDirection="horizontal">
         <div
           style={{ backgroundImage: `url(${person.image})` }}
@@ -51,6 +62,9 @@ const [isFlippedId, setIsFlippedId] = useState(false);
             }}
           >
             <AddIcon></AddIcon>
+            <Link to='/dating/edit/:id'>
+              <EditIcon></EditIcon>
+            </Link>
           </IconButton>
         </div>
         <div>
@@ -78,11 +92,11 @@ const [isFlippedId, setIsFlippedId] = useState(false);
         </div>
       </ReactCardFlip>
       <div className="person-footer">
-        <IconButton onClick={handleClickX}>
+        <IconButton onClick={() => swipe('left')}>
           <CloseIcon color="error" fontSize="large" />
         </IconButton>
 
-        <IconButton onClick={handleClickHeart}>
+        <IconButton onClick={() => swipe('right')}>
           <FavoriteIcon color="success" fontSize="large" />
         </IconButton>
       </div>
