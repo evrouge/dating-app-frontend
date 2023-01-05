@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import Home from "./components/HomePage";
 import Chat from "./components/Chat";
 import Edit from "./components/Edit";
-import Person from './components/Person'
+import Person from "./components/Person";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App(props) {
@@ -46,12 +46,13 @@ function App(props) {
     axios
       .put(
         "https://serene-mountain-09515.herokuapp.com/api/dating" +
-        editPerson.id, editPerson
+          editPerson.id,
+        editPerson
       )
       .then((response) => {
-        getPeople()
-      })
-  }
+        getPeople();
+      });
+  };
 
   return (
     <Router>
@@ -70,7 +71,13 @@ function App(props) {
             path="/dating/edit/:id"
             element={
               <div>
-                <Header /> <Edit person={props.person} handleUpdate={handleUpdate} /> <Footer />
+                <Header />{" "}
+                <Edit
+                  getPeople={getPeople}
+                  people={people}
+                  handleUpdate={handleUpdate}
+                />{" "}
+                {/* <Footer /> */}
               </div>
             }
           ></Route>
@@ -81,11 +88,8 @@ function App(props) {
                 <Header />
                 <div className="containerCard">
                   {people.map((person) => {
-                    return (
-                      <Person key={person.id} person={person} />
-                    )
-                  })
-                  }
+                    return <Person key={person.id} person={person} />;
+                  })}
                 </div>
               </div>
             }
@@ -96,12 +100,12 @@ function App(props) {
           ></Route>
         </Routes>
       </div>
-    </Router >
+    </Router>
   );
 }
 
 export default App;
 
-
-
-{/* <Cards getPeople={getPeople} people={people} /> */ }
+{
+  /* <Cards getPeople={getPeople} people={people} /> */
+}
