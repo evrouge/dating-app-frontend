@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import TinderCard from "react-tinder-card";
 import ReactCardFlip from "react-card-flip";
 import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import { amber } from "@mui/material/colors";
 import "../Cards.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Link
+// } from "react-router-dom";
+
 
 
 function Cards(props) {
@@ -62,7 +63,7 @@ function Cards(props) {
               >
                 <div
                   style={{ backgroundImage: `url(${person.image})` }}
-                  className="cardd"
+                  className="profile-card"
                 >
                   <h3>
                     {person.name}, {person.age}
