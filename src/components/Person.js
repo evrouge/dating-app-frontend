@@ -33,7 +33,13 @@ const [isFlippedId, setIsFlippedId] = useState(false);
   }
 
   return (
-    <TinderCard className="swipe" key={person.id} preventSwipe={["up", "down"]} ref={cardRef}>
+    <TinderCard
+      className="swipe"
+      key={person.id}
+      preventSwipe={["up", "down"]}
+      ref={cardRef}
+      
+    >
       <ReactCardFlip isFlipped={isFlippedId} flipDirection="horizontal">
         <div
           style={{ backgroundImage: `url(${person.image})` }}
