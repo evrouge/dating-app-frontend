@@ -45,7 +45,7 @@ function App(props) {
   const handleUpdate = (editPerson) => {
     axios
       .put(
-        "https://serene-mountain-09515.herokuapp.com/api/dating" +
+        "https://serene-mountain-09515.herokuapp.com/api/dating/" +
           editPerson.id,
         editPerson
       )
