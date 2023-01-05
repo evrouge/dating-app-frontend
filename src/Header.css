@@ -1,8 +1,14 @@
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 3%;
+}
+
+.header-icons {
+    width: 550px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .link {
