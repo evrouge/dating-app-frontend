@@ -42,7 +42,8 @@
 }
 
 .nav h1,
-.container {
+.container,
+.profile-form {
     font-family: 'Anybody', cursive;
 }
 
@@ -76,6 +77,11 @@ h5 {
 }
 
 /* sign up form */
-.sign-up-form {
+.sign-up-form,
+.profile-form {
     font-weight: bold;
+}
+
+.form-control {
+    border: 1px solid #5C6B73 !important;
 }
