@@ -6,11 +6,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Edit(props) {
   const [person, setPerson] = useState();
-  const personId = useParams().id;
+    const personId = useParams().id;
+    const navigate = useNavigate();
 
   const handleChange = (event) => {
     setPerson({ ...person, [event.target.name]: event.target.value });
@@ -18,27 +19,23 @@ function Edit(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.handleUpdate(person);
+      props.handleUpdate(person);
+      navigate('/dating');
   };
 
   useEffect(() => {
     props.getPeople();
-    console.log(props.people);
-    // const foundPerson = props.people.find((person) => {
-    //   return person.id === personId;
-    // });
-    // setPerson(foundPerson);
-    // when pg loads, it will look for the person with the same ID as the URL and set it in state
   }, []);
-  useEffect(() => {
-    console.log(props.people);
-    const foundPerson = props.people.find((person) => {
-      // convert the personId from the url to an integer because it's a string by default
-      return person.id === parseInt(personId);
-    });
-    console.log(foundPerson);
-    setPerson(foundPerson); // when pg loads, it will look for the person with the same ID as the URL and set it in state
-  }, [props.people]);
+    useEffect(() => {
+      // when pg loads, it will look for the person with the same ID as the URL and set it in state
+      console.log(props.people);
+      const foundPerson = props.people.find((person) => { // props.people is an array. .find() is a method to look for something within an array when the matching condition passes.
+        // convert the personId from the url to an integer because it's a string by default
+        return person.id === parseInt(personId); // matching condition
+      });
+      console.log(foundPerson);
+      setPerson(foundPerson);
+    }, [props.people]);
   console.log(person);
 
   // if person is not found, show error message
