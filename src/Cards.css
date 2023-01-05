@@ -7,7 +7,6 @@
     background-size: cover;
     background-position: center;
     border-radius: 20px;
-    box-shadow: 10px 10px black;
 }
 
 .containerCard {
@@ -54,4 +53,8 @@
     justify-content: space-between;
     width: 100%;
     margin-top: 40px;
+}
+
+.swipe {
+    overflow: hidden;
 }
