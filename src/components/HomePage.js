@@ -6,16 +6,19 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import {useNavigate} from "react-router-dom";
 
 function Home(props) {
   let emptyPerson = {
+    email: "",
+    password: "",
     name: "",
     age: "",
     ethnicity: "",
     location: "",
     hobbies: "",
     occupation: "",
-    image: "",
+    image: ""
   };
 
   const [form, setForm] = useState(false);
@@ -23,6 +26,18 @@ function Home(props) {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleUserChange = (event) => {
+    props.setUser({...props.user, [event.target.name]: event.target.value})
+  }
+
+  const handleUserSubmit = (event) => {
+    event.preventDefault();
+    props.handleLogin(props.user)
+    navigate("/dating")
+  }
+  
   const handleChange = (event) => {
     setPerson({ ...person, [event.target.name]: event.target.value });
   };
@@ -89,7 +104,7 @@ function Home(props) {
       </nav>
       <div className="home-content">
         <h1>Welcome to LoveStruck!</h1>
-        <div classname="">
+        <div className="">
           <Button onClick={getRegister} variant="warning">
             Register
           </Button>
@@ -127,15 +142,15 @@ function Home(props) {
           )}
           {login ? (
             <div>
-              <Form className="login mt-2">
+              <Form className="login mt-2" onSubmit={handleUserSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control type="text" placeholder="Enter username" />
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type="text" name='email' value={props.user.email} placeholder="Enter email" onChange={handleUserChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control type="password" name='password' value={props.user.password} placeholder="Enter password" onChange={handleUserChange} />
                 </Form.Group>
 
                 <Button className="mb-3" variant="primary" type="submit">
@@ -158,6 +173,30 @@ function Home(props) {
         {form ? (
           <>
             <Form className="mt-2 profile-form" onSubmit={handleSubmit}>
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formGridName">
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="email"
+                    value={person.email}
+                    placeholder="Email"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridAge">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    value={person.password}
+                    placeholder="password"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Row>
+
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridName">
                   <Form.Label>Name</Form.Label>

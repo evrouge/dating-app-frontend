@@ -17,6 +17,7 @@
 
 .swipe {
     position: absolute;
+    overflow: hidden;
 }
 
 .profile-card h3 {
@@ -55,6 +56,6 @@
     margin-top: 40px;
 }
 
-.swipe {
+/* .swipe {
     overflow: hidden;
-}
+} */

@@ -24,6 +24,7 @@ function Header() {
               <PersonIcon />
             </Link>
           </IconButton>
+          
           <IconButton>
             <Link to="/dating" className="link">
               <h1>❤️</h1>
@@ -35,6 +36,7 @@ function Header() {
               <ChatIcon />
             </Link>
           </IconButton>
+          <button>LOG OUT</button>
         </div>
       </div>
     );
