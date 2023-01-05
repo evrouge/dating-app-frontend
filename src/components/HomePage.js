@@ -88,14 +88,13 @@ function Home(props) {
         )} */}
       </nav>
       <div className="home-content">
-        <h1>Welcome!</h1>
+        <h1>Welcome to LoveStruck!</h1>
         <div classname="">
           <Button onClick={getRegister} variant="warning">
             Register
           </Button>
           {register ? (
             <div className="container mt-2">
-              <h5>Welcome to LoveStruck!</h5>
               <h5>Signup to start dating!</h5>
               <Form className="sign-up-form">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
