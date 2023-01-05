@@ -95,11 +95,15 @@ function Home(props) {
           </Button>
           {register ? (
             <div className="container mt-2">
-              <h5>Signup to start dating!</h5>
+              <h5>Sign up to start dating!</h5>
               <Form className="sign-up-form">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Username</Form.Label>
-                  <Form.Control type="text" placeholder="Enter username" />
+                  <Form.Control
+                    className="input-field"
+                    type="text"
+                    placeholder="Enter username"
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -107,12 +111,12 @@ function Home(props) {
                   <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
 
-                <Button variant="success" type="submit">
+                <Button variant="primary" type="submit">
                   Submit
                 </Button>
               </Form>
               <h5 className="mt-2">Already have an account?</h5>
-              <Button onClick={getLogin} className="me-2" variant="danger">
+              <Button onClick={getLogin} variant="danger">
                 Login
               </Button>
               <hr />
@@ -147,13 +151,13 @@ function Home(props) {
             <></>
           )}
 
-          <Button onClick={getAddForm} className="ms-2" variant="info">
+          <Button onClick={getAddForm} className="ms-2" variant="warning">
             Create Profile
           </Button>
         </div>
         {form ? (
           <>
-            <Form className="mt-2" onSubmit={handleSubmit}>
+            <Form className="mt-2 profile-form" onSubmit={handleSubmit}>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridName">
                   <Form.Label>Name</Form.Label>
@@ -172,6 +176,9 @@ function Home(props) {
                     type="number"
                     name="age"
                     value={person.age}
+                    placeholder="Age"
+                    min="0"
+                    max="100"
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -183,6 +190,7 @@ function Home(props) {
                   type="text"
                   name="hobbies"
                   value={person.hobbies}
+                  placeholder="Hobbies"
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -216,6 +224,7 @@ function Home(props) {
                     type="text"
                     name="occupation"
                     value={person.occupation}
+                    placeholder="Occupation"
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -225,13 +234,14 @@ function Home(props) {
                   <Form.Control
                     type="text"
                     name="ethnicity"
+                    placeholder="Ethnicity"
                     value={person.ethnicity}
                     onChange={handleChange}
                   />
                 </Form.Group>
               </Row>
 
-              <Button variant="success" type="submit">
+              <Button variant="primary" type="submit">
                 Submit
               </Button>
             </Form>
