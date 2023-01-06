@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 
 function Edit(props) {
@@ -40,10 +41,18 @@ function Edit(props) {
     navigate("/dating");
   };
 
+  // const handleDelete = (event) => {
+  //   console.log("handle delete");
+  // };
   const handleDelete = (event) => {
-    console.log("handle delete");
-  };
-
+    axios
+      .delete("https://serene-mountain-09515.herokuapp.com/api/dating/" + event.target.value)
+      .then((response) => {
+        props.getPeople();
+        navigate('/')
+      })
+  }
+  
   return (
     <div className="text-center">
       <div className="container">
@@ -169,7 +178,7 @@ function Edit(props) {
             variant="link"
             type="button"
             onClick={handleShow}
-            value={props.users.id}
+            // value={props.users.id}
           >
             Delete Profile
           </Button>
@@ -184,7 +193,7 @@ function Edit(props) {
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="danger" onClick={handleDelete}>
+            <Button variant="danger" value={props.users.id} onClick={handleDelete}>
               Delete
             </Button>
           </Modal.Footer>

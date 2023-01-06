@@ -59,6 +59,15 @@ const App = () => {
       });
   };
 
+  // const handleDelete = (event) => {
+  //   axios
+  //     .delete("https://serene-mountain-09515.herokuapp.com/api/dating/" + event.target.value)
+  //     .then((response) => {
+  //       getPeople();
+  //       navigate('/')
+  //     })
+  // }
+
   return (
     <Router>
       <div className="App">
