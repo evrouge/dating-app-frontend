@@ -45,8 +45,8 @@ function Edit(props) {
 
   return (
     <div>
-      <h1>Your Profile</h1>
-      <img className="profile" src={person.image} />
+      <h1>My Profile</h1>
+      <img className="profile mb-3" src={person.image} />
       <div className="container">
         <Form className="mt-2 profile-form" onSubmit={handleSubmit}>
           <Row className="mb-3">
@@ -164,15 +164,15 @@ function Edit(props) {
           </Button>
         </Form>
 
-        <p
-          className="mt-3"
-          variant="danger"
+        <Button
+          className="mt-3 delete-btn"
+          variant="link"
           type="button"
           onClick={handleShow}
           value={props.users.id}
         >
           Delete Profile
-        </p>
+        </Button>
         <Modal show={showModal} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>
