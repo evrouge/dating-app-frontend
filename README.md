@@ -35,3 +35,6 @@ ___________________________________
 
 - Trigger swipe by button:
 `https://github.com/3DJakob/react-tinder-card-demo/blob/master/src/examples/Advanced.js`
+
+- Material UI icons:
+`https://mui.com/material-ui/material-icons/`
