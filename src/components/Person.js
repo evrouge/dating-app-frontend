@@ -65,7 +65,7 @@ const Person = (props) => {
           >
             <AddIcon></AddIcon>
             <Link to={`/dating/edit/${person.id}`}>
-              <EditIcon></EditIcon>
+              {/* <EditIcon></EditIcon> */}
             </Link>
           </IconButton>
         </div>

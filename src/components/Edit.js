@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import "../Edit.css";
-import { useEffect } from "react";
 import axios from 'axios';
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Edit(props) {
-  // const [person, setPerson] = useState();
-  const personId = useParams().id;
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+
+    // MODAL
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
   const [person, setPerson] = useState({
     id: props.users.id,
@@ -33,17 +36,18 @@ function Edit(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.handleUpdate(person);
+      props.handleUpdate(person);
     navigate('/dating');
   };
 
-  const handleDelete = (event) => {
-    axios
-      .delete("https://serene-mountain-09515.herokuapp.com/api/dating/" + event.target.value)
-      .then((response) => {
-        props.getPeople();
-        navigate('/')
-      })
+    const handleDelete = (event) => {
+      console.log('handle delete')
+    // axios
+    //   .delete("https://serene-mountain-09515.herokuapp.com/api/dating/" + event.target.value)
+    //   .then(() => {
+    //     props.getPeople();
+    //     navigate('/')
+    //   })
   }
 
   // useEffect(() => {
@@ -185,7 +189,30 @@ function Edit(props) {
           Submit
         </Button>
       </Form>
-      <Button variant="danger" type="button" onClick={handleDelete} value={props.users.id}>Delete Profile</Button>
+      <Button
+        className="mt-3"
+        variant="danger"
+        type="button"
+        onClick={handleShow}
+        value={props.users.id}
+      >
+        Delete Profile
+      </Button>
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Are you sure you want to delete your profile?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
