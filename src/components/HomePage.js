@@ -35,6 +35,7 @@ function Home(props) {
   const handleUserSubmit = (event) => {
     event.preventDefault();
     props.handleLogin(props.user)
+    event.target.reset();
     navigate("/dating")
   }
   
