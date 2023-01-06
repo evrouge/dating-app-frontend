@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import '../Cards.css';
 import TinderCard from "react-tinder-card";
 import ReactCardFlip from "react-card-flip";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,6 +9,7 @@ import { amber } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CloseIcon from "@mui/icons-material/Close";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 
 const Person = (props) => {
   const [isFlippedId, setIsFlippedId] = useState(false);
