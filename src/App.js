@@ -13,18 +13,21 @@ import Chat from "./components/Chat";
 import Edit from "./components/Edit";
 import Person from "./components/Person";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-function App() {
+const App = () => {
   let [people, setPeople] = useState([]);
   const [details, setDetails] = useState(false);
+  // const navigate = useNavigate()
   // const [isFlippedId, setIsFlippedId] = useState();
 
   // holds the user information when creating a new user
   let [users, setUsers] = useState();
 
   //USED FOR LOGIN FORM
-  let emptyUser = {email: '', password: ''};
-  const [user,setUser] = useState(emptyUser);
+  let emptyUser = { email: '', password: '' };
+  const [user, setUser] = useState(emptyUser);
+
 
 
   const getDetails = () => {
@@ -66,10 +69,20 @@ function App() {
         "https://serene-mountain-09515.herokuapp.com/api/dating/" + editUser.id, editUser
       )
       .then((response) => {
-        handleLogin({email: editUser.email, password: editUser.password})
+        handleLogin({ email: editUser.email, password: editUser.password })
         getPeople();
       });
   };
+
+  // const handleDelete = (event) => {
+  //   axios
+  //     .delete("https://serene-mountain-09515.herokuapp.com/api/dating/" + event.target.value)
+  //     .then((response) => {
+  //       getPeople();
+  //       navigate('/')
+  //     })
+  // }
+
 
   return (
     <Router>
@@ -93,6 +106,9 @@ function App() {
                   getPeople={getPeople}
                   users={users}
                   handleUpdate={handleUpdate}
+                // handleDelete={handleDelete}
+
+
                 />{" "}
                 {/* <Footer /> */}
               </div>
