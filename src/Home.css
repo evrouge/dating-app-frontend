@@ -77,3 +77,15 @@ h5 {
 .form-control {
     border: 1px solid #5C6B73 !important;
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-direction: row !important;
+        flex-wrap:wrap !important;
+    }
+}
