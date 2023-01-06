@@ -54,3 +54,7 @@
     width: 100%;
     margin-top: 40px;
 }
+
+.log-out-btn {
+    padding: 10px !important;
+}

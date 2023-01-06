@@ -8,12 +8,15 @@ import { amber } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CloseIcon from "@mui/icons-material/Close";
 import { BrowserRouter as Router, Routes, Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
+import { useNavigate} from 'react-router-dom'
 
 const Person = (props) => {
   const [isFlippedId, setIsFlippedId] = useState(false);
   const person = props.person;
   const cardRef = useRef();
   console.log(person);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setIsFlippedId((prev) => !prev);
@@ -47,9 +50,7 @@ const Person = (props) => {
             }}
           >
             <AddIcon></AddIcon>
-            <Link to={`/dating/edit/${person.id}`}>
-
-            </Link>
+            <Link to={`/dating/edit/${person.id}`}></Link>
           </IconButton>
         </div>
         <div>
@@ -82,6 +83,16 @@ const Person = (props) => {
           <FavoriteIcon color="success" fontSize="large" />
         </IconButton>
       </div>
+      <Button
+        className="log-out-btn"
+        onClick={() => {
+          navigate("/");
+        }}
+        variant="dark"
+        size="lg"
+      >
+        LOG OUT
+      </Button>
     </TinderCard>
   );
 };
