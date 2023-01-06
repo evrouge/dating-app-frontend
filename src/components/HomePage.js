@@ -106,8 +106,8 @@ function Home(props) {
         </div>
 
         {form ? (
-          <>
-            <Form className="mt-2 profile-form" onSubmit={handleSubmit}>
+          <div className="container">
+            <Form className="profile-form" onSubmit={handleSubmit}>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridName">
                   <Form.Label>Email:</Form.Label>
@@ -223,12 +223,13 @@ function Home(props) {
                 Submit
               </Button>
             </Form>
-
+          
             <h5 className="mt-2">Already have an account?</h5>
             <Button onClick={getLogin} variant="danger">
               Login
             </Button>
-          </>
+          </div>
+          
         ) : (
           <></>
         )}
