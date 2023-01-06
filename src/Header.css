@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3%;
+    padding: 40px;
 }
 
 .header-icons {
-    width: 550px;
+    width: 390px;
     display: flex;
     justify-content: space-between;
 }
@@ -14,8 +14,4 @@
 .link {
     text-decoration: none !important;
     color: rgb(44, 38, 38) !important;
-}
-
-.log-out-btn {
-    height: 40px;
 }
