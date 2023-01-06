@@ -1,0 +1,79 @@
+.homepage {
+    /* background-image: url(https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia.gettyimages.com%2Fid%2F581033659%2Fphoto%2Fsmart-phone-love-connection.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3DsxCzsLd_Jea7c5Oxi_FFEOfmuW_QRokZk5fMLafhw9g%3D); */
+    width: 100vw;
+    height: 100vh;
+}
+
+.background-img {
+    position: relative;
+    z-index: -1;
+}
+
+.background-img:before {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-image: url("https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia.gettyimages.com%2Fid%2F581033659%2Fphoto%2Fsmart-phone-love-connection.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3DsxCzsLd_Jea7c5Oxi_FFEOfmuW_QRokZk5fMLafhw9g%3D");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    content: "";
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #6D709A;
+}
+
+.nav h1,
+.container,
+.profile-form {
+    font-family: 'Anybody', cursive;
+}
+
+h1 {
+    font-family: 'Anybody', cursive;
+    text-transform: uppercase;
+    color: #284B63;
+}
+
+h5 {
+    color: #284B63;
+}
+
+/* for register and create pf button */
+.home-content {
+    display: flex;
+    height: calc(100% - 72px);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* login */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+/* sign up form */
+.sign-up-form,
+.profile-form {
+    font-weight: bold;
+}
+
+.form-control {
+    border: 1px solid #5C6B73 !important;
+}

@@ -1,6 +1,17 @@
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 3%;
+    padding: 40px;
+}
+
+.header-icons {
+    width: 390px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link {
+    text-decoration: none !important;
+    color: rgb(44, 38, 38) !important;
 }
