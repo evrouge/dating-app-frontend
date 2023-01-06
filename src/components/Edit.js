@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../Edit.css";
 import { useEffect } from "react";
+import axios from 'axios';
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -15,7 +16,7 @@ function Edit(props) {
 
   const [person, setPerson] = useState({
     id: props.users.id,
-    email:props.users.email,
+    email: props.users.email,
     password: '',
     name: props.users.name,
     age: props.users.age,
@@ -32,9 +33,18 @@ function Edit(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-      props.handleUpdate(person);
-      navigate('/dating');
+    props.handleUpdate(person);
+    navigate('/dating');
   };
+
+  const handleDelete = (event) => {
+    axios
+      .delete("https://serene-mountain-09515.herokuapp.com/api/dating/" + event.target.value)
+      .then((response) => {
+        props.getPeople();
+        navigate('/')
+      })
+  }
 
   // useEffect(() => {
   //   props.getPeople();
@@ -64,7 +74,7 @@ function Edit(props) {
     <div>
       <h1>Edit</h1>
       <Form className="mt-2 profile-form" onSubmit={handleSubmit}>
-      <Row className="mb-3">
+        <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridName">
             <Form.Label>Email:</Form.Label>
             <Form.Control
@@ -87,7 +97,7 @@ function Edit(props) {
             />
           </Form.Group>
         </Row>
-        
+
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridName">
             <Form.Label>Name</Form.Label>
@@ -175,6 +185,7 @@ function Edit(props) {
           Submit
         </Button>
       </Form>
+      <Button variant="danger" type="button" onClick={handleDelete} value={props.users.id}>Delete Profile</Button>
     </div>
   );
 }
