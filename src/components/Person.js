@@ -3,13 +3,11 @@ import '../Cards.css';
 import TinderCard from "react-tinder-card";
 import ReactCardFlip from "react-card-flip";
 import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import { amber } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CloseIcon from "@mui/icons-material/Close";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Link } from "react-router-dom";
 
 const Person = (props) => {
   const [isFlippedId, setIsFlippedId] = useState(false);
@@ -18,23 +16,9 @@ const Person = (props) => {
   console.log(person);
 
   const handleClick = () => {
-    // if there is a truthy id parameter, update state with said id to flip the corresponding card, else revert cards to original state
-    // if (id) {
-    //   setIsFlippedId(id);
-    // } else {
-    //   setIsFlippedId();
-    // }
     setIsFlippedId((prev) => !prev);
     console.log("card is flipped");
   };
-
-  // const handleClickX = () => {
-  //   cardRef.current.swipe("left")
-  // }
-
-  // const handleClickHeart = () => {
-  //   cardRef.current.swipe("right");
-  // }
 
   const swipe = (dir) => {
     cardRef.current.swipe(dir);
@@ -58,14 +42,13 @@ const Person = (props) => {
           <IconButton
             className="plus"
             sx={{ color: amber[50] }}
-            // onClick={getDetails}
             onClick={() => {
               handleClick();
             }}
           >
             <AddIcon></AddIcon>
             <Link to={`/dating/edit/${person.id}`}>
-              {/* <EditIcon></EditIcon> */}
+
             </Link>
           </IconButton>
         </div>
@@ -80,12 +63,9 @@ const Person = (props) => {
             <p>
               <b>Occupation:</b> {person.occupation}
             </p>
-            {/* <button onClick={handleClick}></button>
-             */}
             <IconButton
               className="plus"
               sx={{ color: amber[50] }}
-              // onClick={getDetails}
               onClick={handleClick}
             >
               <AddIcon></AddIcon>

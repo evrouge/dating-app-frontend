@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Home(props) {
   let emptyPerson = {
@@ -23,13 +23,12 @@ function Home(props) {
 
   const [form, setForm] = useState(false);
   const [person, setPerson] = useState(emptyPerson);
-  const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
 
   const navigate = useNavigate();
 
   const handleUserChange = (event) => {
-    props.setUser({...props.user, [event.target.name]: event.target.value})
+    props.setUser({ ...props.user, [event.target.name]: event.target.value })
   }
 
   const handleUserSubmit = (event) => {
@@ -38,7 +37,7 @@ function Home(props) {
     event.target.reset();
     navigate("/dating")
   }
-  
+
   const handleChange = (event) => {
     setPerson({ ...person, [event.target.name]: event.target.value });
   };
@@ -46,24 +45,18 @@ function Home(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.handleCreate(person);
+    setLogin(true);
+    setForm(false);
   };
 
   const getAddForm = () => {
     setForm(!form);
-    setRegister(false);
     setLogin(false);
-  };
-
-  const getRegister = () => {
-    setRegister(!register);
-    setLogin(false);
-    setForm(false);
   };
 
   const getLogin = () => {
     setLogin(!login);
     setForm(false);
-    setRegister(false);
   };
 
   return (
@@ -77,70 +70,11 @@ function Home(props) {
         <Button onClick={getLogin} className="me-2" variant="danger">
           Login
         </Button>
-        {/* {login ? (
-          <div>
-            <Form className="login">
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter username" />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-            <p>
-              Don't have an account?{" "}
-              <Button onClick={getRegister}>Signup here</Button>
-            </p>
-          </div>
-        ) : (
-          <></>
-        )} */}
       </nav>
+
       <div className="home-content">
         <h1>Welcome to LoveStruck!</h1>
         <div className="">
-          <Button onClick={getRegister} variant="warning">
-            Register
-          </Button>
-          {register ? (
-            <div className="container mt-2">
-              <h5>Sign up to start dating!</h5>
-              <Form className="sign-up-form">
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    className="input-field"
-                    type="text"
-                    placeholder="Enter username"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Form>
-              <h5 className="mt-2">Already have an account?</h5>
-              <Button onClick={getLogin} variant="danger">
-                Login
-              </Button>
-              <hr />
-              <h2>GET THE APP</h2>
-            </div>
-          ) : (
-            <></>
-          )}
           {login ? (
             <div>
               <Form className="login mt-2" onSubmit={handleUserSubmit}>
@@ -160,7 +94,6 @@ function Home(props) {
               </Form>
               <p>
                 Don't have an account?{" "}
-                <Button onClick={getRegister}>Sign up here</Button>
               </p>
             </div>
           ) : (
@@ -171,6 +104,7 @@ function Home(props) {
             Create Profile
           </Button>
         </div>
+
         {form ? (
           <>
             <Form className="mt-2 profile-form" onSubmit={handleSubmit}>
@@ -184,6 +118,10 @@ function Home(props) {
                     placeholder="Email"
                     onChange={handleChange}
                   />
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridAge">
@@ -285,12 +223,17 @@ function Home(props) {
                 Submit
               </Button>
             </Form>
+
+            <h5 className="mt-2">Already have an account?</h5>
+            <Button onClick={getLogin} variant="danger">
+              Login
+            </Button>
           </>
         ) : (
           <></>
         )}
       </div>
-    </div>
+    </div >
   );
 }
 
