@@ -11,6 +11,10 @@ ___
 ### For Front-End:
 - We underestimated the scope of the actual work. As we worked on the project, the app got more complicated. We didn't flesh out the idea.
 
+- Unable to reset input fields at log-in page unless you refresh the page.
+
+
+
 ## Sources:
 - React-Card-Flip here: `https://www.npmjs.com/package/react-card-flip`
 
