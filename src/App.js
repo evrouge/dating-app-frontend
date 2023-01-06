@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import './App.css';
+// import './App.css';
+import MessageScreen from "./components/MessageScreen";
 import Header from "./components/Header";
 import './Cards.css';
 import Home from "./components/HomePage";
@@ -63,6 +64,15 @@ const App = () => {
     <Router>
       <div className="App">
         <Routes>
+          <Route
+            path="/dating/messages/:person"
+            element={
+              <div>
+                <Header />
+                <MessageScreen />
+              </div>
+            }
+          ></Route>
           <Route
             path="/dating/messages"
             element={

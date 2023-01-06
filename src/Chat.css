@@ -1,0 +1,29 @@
+.message{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    height: 70px;
+    border-bottom: 1px solid rgb(247, 247, 247);
+    margin-top: 30px;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.message-details{
+    flex: 1;
+}
+
+.message-details > p {
+    color: gray !important;
+}
+
+.timestamp{
+    color:rgb(199, 192, 192);
+}
+
+.message-image{
+    margin-right: 20px;
+}

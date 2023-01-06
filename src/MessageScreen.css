@@ -1,0 +1,49 @@
+.messagescreen-message{
+    display:flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.message-text{
+    margin-left: 10px;
+    background-color: lightgray;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.matched {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+}
+
+.message-text-me{
+    margin-left: auto;
+    background-color: rgb(41, 178, 197);
+    padding: 15px;
+    border-radius: 20px;
+    color: white;
+}
+
+.input {
+    display: flex;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid lightgray;
+}
+
+.inputField {
+    flex: 1; /* this expands the container to its full width */
+    padding: 10px;
+    border: none;
+}
+
+.send-btn {
+    border: none;
+    margin-right: 20px;
+    background-color: white;
+    font-weight: bolder;
+    color: #fe3d71;
+}
