@@ -30,6 +30,7 @@ function MessageScreen(){
     }
 
     return (
+        
         <div className='messageScreen'>
             <p className='matched'>YOU MATCHED WITH JOEY TRIBBIANNI ON 22/12/22</p>
             {messages.map((message) =>(
@@ -45,6 +46,7 @@ function MessageScreen(){
                     )
                 
             ))}
+
             {/* this is so we can type a message on the chat screen */}
            
                 <form className='input'>

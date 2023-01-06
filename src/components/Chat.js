@@ -2,6 +2,7 @@ import React from 'react';
 import '../Chat.css';
 import Message from './Message';
 
+
 function Chat() {
     return (
         <div className="chats">

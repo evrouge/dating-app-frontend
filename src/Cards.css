@@ -17,6 +17,7 @@
 .swipe {
     position: absolute;
     overflow: hidden;
+    text-align: center;
 }
 
 .profile-card h3 {
@@ -56,5 +57,10 @@
 }
 
 .log-out-btn {
+    margin-top: 20px !important;
     padding: 10px !important;
 }
+
+/* .App{
+    background-color: red;
+} */
