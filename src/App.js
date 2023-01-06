@@ -1,22 +1,31 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header";
-import Cards from "./components/Cards";
+// import Cards from "./components/Cards";
+import './Cards.css';
 import Footer from "./components/Footer";
-import AddIcon from "@mui/icons-material/Add";
-import IconButton from "@mui/material/IconButton";
+// import AddIcon from "@mui/icons-material/Add";
+// import IconButton from "@mui/material/IconButton";
 import Home from "./components/HomePage";
 import Chat from "./components/Chat";
 import Edit from "./components/Edit";
-import Person from './components/Person'
+import Person from "./components/Person";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-function App(props) {
+function App() {
   let [people, setPeople] = useState([]);
   const [details, setDetails] = useState(false);
-  const [isFlippedId, setIsFlippedId] = useState();
+  // const [isFlippedId, setIsFlippedId] = useState();
+
+  // holds the user information when creating a new user
+  let [users, setUsers] = useState();
+
+  //USED FOR LOGIN FORM
+  let emptyUser = {email: '', password: ''};
+  const [user,setUser] = useState(emptyUser);
+
 
   const getDetails = () => {
     setDetails(!details);
@@ -42,16 +51,25 @@ function App(props) {
       });
   };
 
-  const handleUpdate = (editPerson) => {
+  const handleLogin = (loggedInUser) => {
     axios
-      .put(
-        "https://serene-mountain-09515.herokuapp.com/api/dating" +
-        editPerson.id, editPerson
-      )
+      .put("https://serene-mountain-09515.herokuapp.com/api/dating/login", loggedInUser)
       .then((response) => {
-        getPeople()
+        setUsers(response.data)
+        setPeople(people.filter(person => person.id !== response.data.id))
       })
   }
+
+  const handleUpdate = (editUser) => {
+    axios
+      .put(
+        "https://serene-mountain-09515.herokuapp.com/api/dating/" + editUser.id, editUser
+      )
+      .then((response) => {
+        handleLogin({email: editUser.email, password: editUser.password})
+        getPeople();
+      });
+  };
 
   return (
     <Router>
@@ -67,10 +85,16 @@ function App(props) {
             }
           ></Route>
           <Route
-            path="/dating/edit/:id"
+            path="/dating/edit"
             element={
               <div>
-                <Header /> <Edit person={props.person} handleUpdate={handleUpdate} /> <Footer />
+                <Header />{" "}
+                <Edit
+                  getPeople={getPeople}
+                  users={users}
+                  handleUpdate={handleUpdate}
+                />{" "}
+                {/* <Footer /> */}
               </div>
             }
           ></Route>
@@ -81,27 +105,24 @@ function App(props) {
                 <Header />
                 <div className="containerCard">
                   {people.map((person) => {
-                    return (
-                      <Person key={person.id} person={person} />
-                    )
-                  })
-                  }
+                    return <Person key={person.id} person={person} />;
+                  })}
                 </div>
               </div>
             }
           ></Route>
           <Route
             path="/"
-            element={<Home getPeople={getPeople} handleCreate={handleCreate} />}
+            element={<Home getPeople={getPeople} handleCreate={handleCreate} handleLogin={handleLogin} user={user} setUser={setUser} />}
           ></Route>
         </Routes>
       </div>
-    </Router >
+    </Router>
   );
 }
 
 export default App;
 
-
-
-{/* <Cards getPeople={getPeople} people={people} /> */ }
+{
+  /* <Cards getPeople={getPeople} people={people} /> */
+}
