@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
+
 function Edit(props) {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -44,9 +45,9 @@ function Edit(props) {
   };
 
   return (
-    <div>
-      <div className="text-center">
-        <h1>My Profile</h1>
+    <div className="text-center">
+      <div className="container">
+        <h1 className="h1">{person.name}'s profile</h1>
         <img className="profile mb-3" src={person.image} />
 
         <div className="container">
