@@ -1,5 +1,15 @@
 .profile {
-    height: 35vh;
-    width: 40vw;
+    width: 20vw;
     border-radius: 20px;
+}
+
+.delete-btn:hover {
+    background-color: #F7B267 !important;
+    color: white !important;
+    text-decoration: none;
+}
+
+.profile-form {
+    width: 600px;
+    margin: auto;
 }
