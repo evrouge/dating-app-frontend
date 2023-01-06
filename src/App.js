@@ -1,13 +1,8 @@
-// import logo from "./logo.svg";
-import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './App.css';
 import Header from "./components/Header";
-// import Cards from "./components/Cards";
 import './Cards.css';
-import Footer from "./components/Footer";
-// import AddIcon from "@mui/icons-material/Add";
-// import IconButton from "@mui/material/IconButton";
 import Home from "./components/HomePage";
 import Chat from "./components/Chat";
 import Edit from "./components/Edit";
@@ -16,8 +11,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 const App = () => {
   let [people, setPeople] = useState([]);
-  const [details, setDetails] = useState(false);
-  // const [isFlippedId, setIsFlippedId] = useState();
 
   // holds the user information when creating a new user
   let [users, setUsers] = useState();
@@ -25,10 +18,6 @@ const App = () => {
   //USED FOR LOGIN FORM
   let emptyUser = { email: '', password: '' };
   const [user, setUser] = useState(emptyUser);
-
-  const getDetails = () => {
-    setDetails(!details);
-  };
 
   useEffect(() => {
     getPeople();
@@ -73,7 +62,6 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        {/* <Router> */}
         <Routes>
           <Route
             path="/dating/messages"
@@ -81,7 +69,6 @@ const App = () => {
               <div>
                 <Header />
                 <Chat />
-                <Footer />
               </div>
             }
           ></Route>
@@ -94,9 +81,7 @@ const App = () => {
                   getPeople={getPeople}
                   users={users}
                   handleUpdate={handleUpdate}
-                // handleDelete={handleDelete}
                 />{" "}
-                {/* <Footer /> */}
               </div>
             }
           ></Route>
@@ -124,7 +109,3 @@ const App = () => {
 }
 
 export default App;
-
-{
-  /* <Cards getPeople={getPeople} people={people} /> */
-}
